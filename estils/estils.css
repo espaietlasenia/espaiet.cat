@@ -62,9 +62,17 @@ a{
 }
 
 img{
-  display:block;
   max-width:100%;
   border-radius: 50%;
+}
+.icon-img,
+.contact-icon img{
+  width: 28px;
+  height: 28px;
+  min-width: 28px;
+  object-fit: contain;
+  border-radius: 0 !important;
+  display: block;
 }
 
 h1,h2,h3{
@@ -812,6 +820,44 @@ main{
   gap: 10px;
 }
 
+.audio-box{
+  margin:42px 0;
+  padding:32px;
+  background:var(--surface-soft);
+  border:1px solid var(--line-light);
+  border-radius:22px;
+}
+
+.audio-header{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:10px;
+}
+
+.audio-icon{
+  font-size:22px;
+}
+
+.audio-label{
+  font-size:14px;
+  color:var(--muted);
+  text-transform:uppercase;
+  letter-spacing:.04em;
+}
+
+.audio-box h3{
+  margin-bottom:12px;
+  font-size:24px;
+}
+
+.audio-box p{
+  margin-bottom:20px;
+}
+
+.resource-card{
+  background:var(--surface-soft);
+}
 /* MÃ²bil */
 @media (max-width: 920px){
   .nav-toggle{
@@ -930,5 +976,81 @@ main{
     object-fit: cover;
     object-position: center;
     border-radius: 50%;
+  }
+}
+
+/* Contacte - targetes de persones */
+.contact-person h3{
+  font-size: clamp(2.1rem, 3vw, 2.8rem);
+  line-height: 1;
+  margin: 0 0 18px;
+  color: var(--text);
+}
+
+.contact-person ul{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 12px;
+}
+
+.contact-person li{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.05rem;
+  line-height: 1.4;
+}
+
+.contact-person a{
+  color: var(--text);
+  text-decoration: none;
+}
+
+.contact-person a:hover{
+  color: var(--accent-dark);
+}
+
+.contact-icon{
+  width: 26px;
+  min-width: 26px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-dark);
+}
+
+.icon-img{
+  width: 28px;
+  height: 28px;
+  border-radius: 0;
+  display: block;
+}
+
+/* WhatsApp més discret */
+.contact-person li:has(.icon-img){
+  margin-top: 6px;
+}
+.contact-label{
+  font-size: 0.85rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+
+@media (max-width: 600px){
+  .contact-person h3{
+    font-size: 2.25rem;
+  }
+
+  .contact-person li{
+    font-size: 0.98rem;
+    align-items: flex-start;
+  }
+
+  .contact-icon{
+    margin-top: 2px;
   }
 }
