@@ -194,26 +194,53 @@
         </div>
 
         <div class="contact-form-wrap">
-          <form id="contact-form" action="https://formspree.io/f/xgorbgya" method="POST">
-            <div class="form-row">
-              <label for="name" class="sr-only">Nom</label>
-              <input type="text" id="name" name="name" placeholder="Nom" required>
-            </div>
+			<form id="contact-form" action="https://formspree.io/f/xgorbgya" method="POST">
+			  <div class="form-row">
+				<label for="name" class="sr-only">Nom</label>
+				<input type="text" id="name" name="nom" placeholder="Nom" required>
+			  </div>
 
-            <div class="form-row">
-              <label for="email" class="sr-only">Correu electrònic</label>
-              <input type="email" id="email" name="email" placeholder="Correu electrònic" required>
-            </div>
+			  <div class="form-row">
+				<label for="email" class="sr-only">Correu electrònic</label>
+				<input type="email" id="email" name="email" placeholder="Correu electrònic" required>
+			  </div>
 
-            <div class="form-row">
-              <label for="message" class="sr-only">Missatge</label>
-              <textarea id="message" name="message" placeholder="Explica’ns breument què necessites o en què et podem orientar" required></textarea>
-            </div>
+			  <div class="form-row">
+				<label for="professional">Tens preferència per alguna professional?</label>
+				<select id="professional" name="professional" required>
+				  <option value="">Selecciona una opció</option>
+				  <option value="Mònica">Mònica</option>
+				  <option value="Ingrid">Ingrid</option>
+				  <option value="Qualsevol">Qualsevol de les dues</option>
+				</select>
+			  </div>
 
-            <button type="submit" class="button-secondary form-button">Enviar missatge</button>
-          </form>
+			  <div class="form-row">
+				<label for="contact-preference">Com prefereixes que et contactem?</label>
+				<select id="contact-preference" name="preferencia_contacte" required>
+				  <option value="">Selecciona una opció</option>
+				  <option value="Correu electrònic">Correu electrònic</option>
+				  <option value="Telèfon">Telèfon</option>
+				  <option value="WhatsApp">WhatsApp</option>
+				</select>
+			  </div>
 
-          <p id="form-status" class="form-status" aria-live="polite"></p>
+			  <div class="form-row">
+				<label for="phone" class="sr-only">Telèfon</label>
+				<input type="tel" id="phone" name="telefon" placeholder="Telèfon / WhatsApp si vols que et contactem així">
+			  </div>
+
+			  <div class="form-row">
+				<label for="message" class="sr-only">Missatge</label>
+				<textarea id="message" name="missatge" placeholder="Explica’ns breument què necessites o en què et podem orientar" required></textarea>
+			  </div>
+
+			  <input type="hidden" name="_subject" value="Nou missatge des de la web d’Espaiet">
+
+			  <button type="submit" class="button-secondary form-button">Enviar missatge</button>
+			</form>
+
+			<p id="form-status" class="form-status" aria-live="polite"></p>
         </div>
       </div>
     </section>
@@ -250,36 +277,7 @@
     </div>
   </footer>
 
-  <script>
-    const form = document.getElementById("contact-form");
-    const status = document.getElementById("form-status");
 
-    form.addEventListener("submit", async function (e) {
-      e.preventDefault();
-
-      const data = new FormData(form);
-      status.textContent = "Enviant...";
-
-      try {
-        const response = await fetch(form.action, {
-          method: "POST",
-          body: data,
-          headers: {
-            "Accept": "application/json"
-          }
-        });
-
-        if (response.ok) {
-          form.reset();
-          status.textContent = "Missatge enviat correctament. Gràcies per escriure'ns.";
-        } else {
-          status.textContent = "Hi ha hagut un problema en enviar el missatge. Torna-ho a provar.";
-        }
-      } catch (error) {
-        status.textContent = "No s'ha pogut enviar el missatge. Torna-ho a provar més tard.";
-      }
-    });
-  </script>
 <div id="cookie-banner" class="cookie-banner">
   <p>
     Utilitzem cookies per millorar l’experiència. Pots acceptar o rebutjar l’ús de cookies analítiques.

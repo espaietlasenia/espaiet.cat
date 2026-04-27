@@ -26,6 +26,34 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
   }
+  
+  const form = document.getElementById("contact-form");
+  const status = document.getElementById("form-status");
+
+  form.addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    const data = new FormData(form);
+    status.textContent = "Enviant...";
+
+    try {
+      const response = await fetch(form.action, {
+        method: "POST",
+        body: data,
+        headers: {
+          "Accept": "application/json"
+        }
+      });
+
+      if (response.ok) {
+        window.location.href = "gracies.html";
+      } else {
+        status.textContent = "Hi ha hagut un problema en enviar el missatge. Torna-ho a provar.";
+      }
+    } catch (error) {
+      status.textContent = "No s'ha pogut enviar el missatge. Torna-ho a provar més tard.";
+    }
+  });
 
   // ✅ GOOGLE ANALYTICS (amb cookies)
   function loadGoogleAnalytics() {

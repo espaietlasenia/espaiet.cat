@@ -183,26 +183,54 @@
       </div>
 
       <div class="contact-form-wrap">
-        <form id="contact-form" action="https://formspree.io/f/xgorbgya" method="POST">
-          <div class="form-row">
-            <label for="name" class="sr-only">Nombre</label>
-            <input type="text" id="name" name="name" placeholder="Nombre" required>
-          </div>
+	  <form id="contact-form" action="https://formspree.io/f/xgorbgya" method="POST">
+		
+		<div class="form-row">
+		  <label for="name" class="sr-only">Nombre</label>
+		  <input type="text" id="name" name="nom" placeholder="Nombre" required>
+		</div>
 
-          <div class="form-row">
-            <label for="email" class="sr-only">Correo electrónico</label>
-            <input type="email" id="email" name="email" placeholder="Correo electrónico" required>
-          </div>
+		<div class="form-row">
+		  <label for="email" class="sr-only">Correo electrónico</label>
+		  <input type="email" id="email" name="email" placeholder="Correo electrónico" required>
+		</div>
 
-          <div class="form-row">
-            <label for="message" class="sr-only">Mensaje</label>
-            <textarea id="message" name="message" placeholder="Explícanos brevemente qué necesitas o en qué podemos orientarte" required></textarea>
-          </div>
+		<div class="form-row">
+		  <label for="professional">¿Tienes preferencia por alguna profesional?</label>
+		  <select id="professional" name="professional" required>
+			<option value="">Selecciona una opción</option>
+			<option value="Mònica">Mónica</option>
+			<option value="Ingrid">Ingrid</option>
+			<option value="Cualquiera">Cualquiera de las dos</option>
+		  </select>
+		</div>
 
-          <button type="submit" class="button-secondary form-button">Enviar mensaje</button>
-        </form>
+		<div class="form-row">
+		  <label for="contact-preference">¿Cómo prefieres que te contactemos?</label>
+		  <select id="contact-preference" name="preferencia_contacte" required>
+			<option value="">Selecciona una opción</option>
+			<option value="Correo electrónico">Correo electrónico</option>
+			<option value="Teléfono">Teléfono</option>
+			<option value="WhatsApp">WhatsApp</option>
+		  </select>
+		</div>
 
-        <p id="form-status" class="form-status" aria-live="polite"></p>
+		<div class="form-row">
+		  <label for="phone" class="sr-only">Teléfono</label>
+		  <input type="tel" id="phone" name="telefon" placeholder="Teléfono / WhatsApp si quieres que te contactemos así">
+		</div>
+
+		<div class="form-row">
+		  <label for="message" class="sr-only">Mensaje</label>
+		  <textarea id="message" name="missatge" placeholder="Explícanos brevemente qué necesitas o en qué podemos orientarte" required></textarea>
+		</div>
+
+		<input type="hidden" name="_subject" value="Nuevo mensaje desde la web de Espaiet">
+
+		<button type="submit" class="button-secondary form-button">Enviar mensaje</button>
+	  </form>
+
+	  <p id="form-status" class="form-status" aria-live="polite"></p>
       </div>
     </div>
   </section>
@@ -239,35 +267,7 @@
   </div>
 </footer>
 
-<script>
-  const form = document.getElementById("contact-form");
-  const status = document.getElementById("form-status");
 
-  form.addEventListener("submit", async function (e) {
-    e.preventDefault();
-
-    const data = new FormData(form);
-    status.textContent = "Enviando...";
-
-    try {
-      const response = await fetch(form.action, {
-        method: "POST",
-        body: data,
-        headers: {
-          "Accept": "application/json"
-        }
-      });
-
-      if (response.ok) {
-        form.reset();
-        status.textContent = "Mensaje enviado correctamente. Gracias por escribirnos.";
-      } else {
-        status.textContent = "Ha habido un problema al enviar el mensaje. Vuelve a intentarlo.";
-      }
-    } catch (error) {
-      status.textContent = "No se ha podido enviar el mensaje. Vuelve a intentarlo más tarde.";
-    }
-  });
 </script>
 <div id="cookie-banner" class="cookie-banner">
   <p>
